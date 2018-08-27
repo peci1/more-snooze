@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is MoreSnooze Extension code.
+   -
+   - The Initial Developer of the Original Code is
+   - Cyrille Nocus
+   - Portions created by the Initial Developer are Copyright (C) 2010
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://calendar/skin/calendar-alarms.css"?>
+<?xml-stylesheet href="chrome://moresnooze/skin/moresnooze.css"?>
+<?xml-stylesheet href="chrome://calendar/content/calendar-bindings.css"?>
+
+<!DOCTYPE prefwindow [
+    <!ENTITY % moreSnoozeDTD SYSTEM "chrome://moresnooze/locale/moresnooze.dtd"> %moreSnoozeDTD;
+]>
+
+
+<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            id="moresnooze-prefs-window"
+            style="width: 40em; height: 24em;"
+            onload="moreSnoozeChrome.initOptionsDialog()"
+            ondialogaccept="moreSnoozeChrome.onSaveItems()"
+            title="&moreSnooze.prefTitle;">
+  <script type="application/javascript">
+    if ("undefined" == typeof(MoreSnoozeChrome)){
+	  var moreSnoozeChrome = {};
+	}
+    moreSnoozeChrome.moreSnooze_cb_05m = "&moreSnooze.cb_05m;";
+    moreSnoozeChrome.moreSnooze_cb_10m = "&moreSnooze.cb_10m;";
+    moreSnoozeChrome.moreSnooze_cb_15m = "&moreSnooze.cb_15m;";
+    moreSnoozeChrome.moreSnooze_cb_20m = "&moreSnooze.cb_20m;";
+    moreSnoozeChrome.moreSnooze_cb_30m = "&moreSnooze.cb_30m;";
+    moreSnoozeChrome.moreSnooze_cb_40m = "&moreSnooze.cb_40m;";
+    moreSnoozeChrome.moreSnooze_cb_50m = "&moreSnooze.cb_50m;";
+    moreSnoozeChrome.moreSnooze_cb_01h = "&moreSnooze.cb_01h;";
+    moreSnoozeChrome.moreSnooze_cb_02h = "&moreSnooze.cb_02h;";
+    moreSnoozeChrome.moreSnooze_cb_03h = "&moreSnooze.cb_03h;";
+    moreSnoozeChrome.moreSnooze_cb_06h = "&moreSnooze.cb_06h;";
+    moreSnoozeChrome.moreSnooze_cb_09h = "&moreSnooze.cb_09h;";
+    moreSnoozeChrome.moreSnooze_cb_12h = "&moreSnooze.cb_12h;";
+    moreSnoozeChrome.moreSnooze_cb_15h = "&moreSnooze.cb_15h;";
+    moreSnoozeChrome.moreSnooze_cb_01d = "&moreSnooze.cb_01d;";
+    moreSnoozeChrome.moreSnooze_cb_02d = "&moreSnooze.cb_02d;";
+    moreSnoozeChrome.moreSnooze_cb_03d = "&moreSnooze.cb_03d;";
+    moreSnoozeChrome.moreSnooze_cb_04d = "&moreSnooze.cb_04d;";
+    moreSnoozeChrome.moreSnooze_cb_05d = "&moreSnooze.cb_05d;";
+    moreSnoozeChrome.moreSnooze_cb_01w = "&moreSnooze.cb_01w;";
+    moreSnoozeChrome.moreSnooze_cb_02w = "&moreSnooze.cb_02w;";
+  </script>
+  <script type="application/javascript" src="chrome://calendar/content/calendar-dialog-utils.js"/><!-- necessaire epour définir l'objet calendrier cal -->
+  <script type="application/javascript" src="chrome://moresnooze/content/moresnooze-common.js"/>
+  <script type="application/javascript" src="chrome://moresnooze/content/options-dialog.js"/>
+
+  <preferences>
+	<preference id="prefSnooze" name="extensions.moresnooze.snooze" type="string"/>
+  </preferences>
+
+  <prefpane id="moresnooze-prefpane">
+    <hbox id="cb_panel" align="start">
+      <vbox id="moresnooze_checkbox_left" flex="1">
+		<checkbox id="cb_05m" label="&moreSnooze.cb_05m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_10m" label="&moreSnooze.cb_10m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_15m" label="&moreSnooze.cb_15m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_20m" label="&moreSnooze.cb_20m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_30m" label="&moreSnooze.cb_30m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_40m" label="&moreSnooze.cb_40m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_50m" label="&moreSnooze.cb_50m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+      </vbox>
+      <vbox id="moresnooze_checkbox_center" flex="1">
+		<checkbox id="cb_01h" label="&moreSnooze.cb_01h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_02h" label="&moreSnooze.cb_02h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_03h" label="&moreSnooze.cb_03h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_06h" label="&moreSnooze.cb_06h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_09h" label="&moreSnooze.cb_09h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_12h" label="&moreSnooze.cb_12h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_15h" label="&moreSnooze.cb_15h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+      </vbox>
+      <vbox id="moresnooze_checkbox_right" flex="1">
+		<checkbox id="cb_01d" label="&moreSnooze.cb_01d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_02d" label="&moreSnooze.cb_02d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_03d" label="&moreSnooze.cb_03d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_04d" label="&moreSnooze.cb_04d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_05d" label="&moreSnooze.cb_05d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_01w" label="&moreSnooze.cb_01w;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+		<checkbox id="cb_02w" label="&moreSnooze.cb_02w;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
+      </vbox>
+    </hbox>
+	<hbox id="cb_button">
+	  <spacer flex="1"/>
+	  <button id="moresnooze_selectall" image="chrome://moresnooze/skin/selectall.png" oncommand="moreSnoozeChrome.ctrl_cb('select');" style="min-width: 20px" label="" tooltiptext="&moreSnooze.selectall;"/>
+	  <button id="moresnooze_deselectall" image="chrome://moresnooze/skin/deselectall.png" oncommand="moreSnoozeChrome.ctrl_cb('deselect');" style="min-width: 20px" label="" tooltiptext="&moreSnooze.deselectall;"/>
+	  <button id="moresnooze_reload" image="chrome://moresnooze/skin/reload.png" oncommand="moreSnoozeChrome.ctrl_cb('reload');" style="min-width: 20px" label="" tooltiptext="&moreSnooze.reload;"/>
+	  <spacer flex="1"/>
+	</hbox>
+  </prefpane>
+</prefwindow>
