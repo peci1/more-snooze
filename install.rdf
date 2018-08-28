@@ -54,6 +54,7 @@
     </em:targetApplication>
    
     <em:optionsURL>chrome://moresnooze/content/options-dialog.xul</em:optionsURL>
+    <em:optionsType>3</em:optionsType>
     <em:iconURL>chrome://moresnooze/skin/icon.png</em:iconURL>
   </Description>      
 </RDF>

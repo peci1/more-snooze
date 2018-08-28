@@ -106,9 +106,11 @@
     </content>
     <implementation>
       <constructor><![CDATA[
+        ChromeUtils.import("resource://gre/modules/Services.jsm");
         moreSnooze();
         
-        let snoozePref = getPrefSafe("calendar.alarms.defaultsnoozelength", 0);
+        var defaultBranch = Services.prefs.getBranch("calendar.alarms.");
+        let snoozePref = defaultBranch.getIntPref("defaultsnoozelength", 0);
         if (snoozePref <= 0) {
           snoozePref = 5;
         }
@@ -192,18 +194,18 @@
               return {1: "unitMinutes", 60: "unitHours", 1440: "unitDays"}[list.value] || "unitMinutes";
           }
 
-          let pluralString = calGetString("calendar", unitName(unitList));
+          let pluralString = cal.l10n.getString("calendar", unitName(unitList));
           let unitPlural = PluralForm.get(unitValue.value, pluralString)
                                      .replace("#1", unitValue.value);
 
-          let accessibleString = calGetString("calendar-alarms",
+          let accessibleString = cal.l10n.getString("calendar-alarms",
                                               "reminderSnoozeOkA11y",
                                               [unitPlural]);
           okButton.setAttribute("aria-label", accessibleString);
 
           let items = unitPopup.getElementsByTagName("xul:menuitem");
           for (let menuItem of items) {
-              pluralString = calGetString("calendar", unitName(menuItem));
+              pluralString = cal.l10n.getString("calendar", unitName(menuItem));
               menuItem.label = PluralForm.get(unitValue.value, pluralString)
                                          .replace("#1", "").trim();
           }
@@ -213,7 +215,8 @@
       <method name="moreSnooze">
         <body><![CDATA[
 	    // variables
-	    let moreSnoozeString = cal.getPrefSafe("extensions.moresnooze.snooze");
+        var defaultBranch = Services.prefs.getBranch("extensions.moresnooze.");
+        let moreSnoozeString = defaultBranch.getCharPref("snooze", moreSnoozeChrome.CURRENT_VERSION + '*' + JSON.stringify(moreSnoozeChrome.SNOOZE_LIST));
 	    let moreSnoozeItem = document.getAnonymousNodes(this);
 	    let parsedSnooze;
 	    var compteur = 0;
@@ -232,7 +235,7 @@
 	      parsedSnooze = moreSnoozeChrome.SNOOZE_LIST;
 	    }
 	    	    
-	    for each (let snooze in parsedSnooze) {
+	    for (var snooze of Object.values(parsedSnooze)) {
 	      if ((snooze.SL_id == undefined) || (snooze.SL_checked == undefined) || (snooze.SL_delay == undefined)){
 		  moreSnoozeItem[compteur].setAttribute("hidden", "true");
 	      } else {

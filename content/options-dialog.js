@@ -34,10 +34,12 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-moreSnoozeChrome.initOptionsDialog = function() {
-  window.setResizable(false);
+ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-  let moreSnoozeString = cal.getPrefSafe("extensions.moresnooze.snooze", moreSnoozeChrome.CURRENT_VERSION + '*' + JSON.stringify(moreSnoozeChrome.SNOOZE_LIST));
+moreSnoozeChrome.initOptionsDialog = function() {
+  var defaultBranch = Services.prefs.getBranch("extensions.moresnooze.");
+  let moreSnoozeString = defaultBranch.getCharPref("snooze", moreSnoozeChrome.CURRENT_VERSION + '*' + JSON.stringify(moreSnoozeChrome.SNOOZE_LIST));
+    
   moreSnoozeChrome.loadSnooze(moreSnoozeString);
 }
 
@@ -56,7 +58,7 @@ moreSnoozeChrome.loadSnooze = function(moreSnoozeString) {
     }
   }
 
-  for each (let snooze in moreSnoozeChrome.parsedSnooze) { 
+  for (var snooze  of Object.values(moreSnoozeChrome.parsedSnooze)) { 
     if ((snooze.SL_id == undefined) || (snooze.SL_checked == undefined) || (snooze.SL_delay == undefined)){
       // on écrase les ancienne prefs.
       moreSnoozeChrome.parsedSnooze = moreSnoozeChrome.SNOOZE_LIST;
@@ -88,7 +90,7 @@ moreSnoozeChrome.onSaveItems = function(){
   let snoozeArray = [];
   let obj;
 
-  for each (let snooze in moreSnoozeChrome.parsedSnooze) {
+  for (var snooze  of Object.values(moreSnoozeChrome.parsedSnooze)) {
     obj = document.getElementById(snooze.SL_id);
     if (obj.getAttribute("checked")){
       snoozeArray.push({SL_id: snooze.SL_id, SL_checked: "y", SL_delay: snooze.SL_delay});
@@ -97,19 +99,20 @@ moreSnoozeChrome.onSaveItems = function(){
     }
   }
 
-  cal.setPref("extensions.moresnooze.snooze", moreSnoozeChrome.CURRENT_VERSION + '*' + JSON.stringify(snoozeArray));
+  var defaultBranch = Services.prefs.getBranch("extensions.moresnooze.");
+  defaultBranch.setCharPref("snooze", moreSnoozeChrome.CURRENT_VERSION + '*' + JSON.stringify(snoozeArray));
 }
 
 
 moreSnoozeChrome.ctrl_cb = function(fonction){
   if (fonction == 'select'){
-    for each (let snooze in moreSnoozeChrome.SNOOZE_LIST){document.getElementById(snooze.SL_id).checked = true;}
+    for (var snooze  of Object.values(moreSnoozeChrome.SNOOZE_LIST)){document.getElementById(snooze.SL_id).checked = true;}
   }
   if (fonction == 'deselect'){
-    for each (let snooze in moreSnoozeChrome.SNOOZE_LIST){document.getElementById(snooze.SL_id).checked = false;}
+    for (var snooze  of Object.values(moreSnoozeChrome.SNOOZE_LIST)){document.getElementById(snooze.SL_id).checked = false;}
   }
   if (fonction == 'reload'){
-    for each (let snooze in moreSnoozeChrome.SNOOZE_LIST){
+    for (var snooze  of Object.values(moreSnoozeChrome.SNOOZE_LIST)){
       if (snooze.SL_checked == 'y'){document.getElementById(snooze.SL_id).checked = true;}
 	  if (snooze.SL_checked == 'n'){document.getElementById(snooze.SL_id).checked = false;}
 	}

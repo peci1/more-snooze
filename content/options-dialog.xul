@@ -38,6 +38,7 @@
 <?xml-stylesheet href="chrome://calendar/skin/calendar-alarms.css"?>
 <?xml-stylesheet href="chrome://moresnooze/skin/moresnooze.css"?>
 <?xml-stylesheet href="chrome://calendar/content/calendar-bindings.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
 
 <!DOCTYPE prefwindow [
     <!ENTITY % moreSnoozeDTD SYSTEM "chrome://moresnooze/locale/moresnooze.dtd"> %moreSnoozeDTD;
@@ -46,7 +47,6 @@
 
 <prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
             id="moresnooze-prefs-window"
-            style="width: 40em; height: 24em;"
             onload="moreSnoozeChrome.initOptionsDialog()"
             ondialogaccept="moreSnoozeChrome.onSaveItems()"
             title="&moreSnooze.prefTitle;">
@@ -85,8 +85,9 @@
   </preferences>
 
   <prefpane id="moresnooze-prefpane">
-    <hbox id="cb_panel" align="start">
-      <vbox id="moresnooze_checkbox_left" flex="1">
+    <hbox id="cb_panel">
+      <spacer flex="1"/>
+      <vbox id="moresnooze_checkbox_left">
 		<checkbox id="cb_05m" label="&moreSnooze.cb_05m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_10m" label="&moreSnooze.cb_10m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_15m" label="&moreSnooze.cb_15m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
@@ -95,7 +96,7 @@
 		<checkbox id="cb_40m" label="&moreSnooze.cb_40m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_50m" label="&moreSnooze.cb_50m;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
       </vbox>
-      <vbox id="moresnooze_checkbox_center" flex="1">
+      <vbox id="moresnooze_checkbox_center">
 		<checkbox id="cb_01h" label="&moreSnooze.cb_01h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_02h" label="&moreSnooze.cb_02h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_03h" label="&moreSnooze.cb_03h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
@@ -104,7 +105,7 @@
 		<checkbox id="cb_12h" label="&moreSnooze.cb_12h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_15h" label="&moreSnooze.cb_15h;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
       </vbox>
-      <vbox id="moresnooze_checkbox_right" flex="1">
+      <vbox id="moresnooze_checkbox_right">
 		<checkbox id="cb_01d" label="&moreSnooze.cb_01d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_02d" label="&moreSnooze.cb_02d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_03d" label="&moreSnooze.cb_03d;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
@@ -113,6 +114,7 @@
 		<checkbox id="cb_01w" label="&moreSnooze.cb_01w;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
 		<checkbox id="cb_02w" label="&moreSnooze.cb_02w;" oncommand="moreSnoozeChrome.saveIfInstantApply()"/>
       </vbox>
+      <spacer flex="1"/>
     </hbox>
 	<hbox id="cb_button">
 	  <spacer flex="1"/>
