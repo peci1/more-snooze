@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "More Snooze",
+  "description": "Customize the snooze times menu when snoozing calendar event alarms",
+  "version": "1.2.1",
+  "author": "Cyrille Nocus",
+  "homepage_url": "https://github.com/peci1/more-snooze",
+  "legacy": true,
+  "applications": {
+    "gecko": {
+      "id": "moresnooze@cyrille.nocus",
+      "strict_min_version": "63.0"
+    }
+  },
+  "icons": {
+    "32": "skin/icon.png"
+  }
+}
