@@ -41,7 +41,7 @@
 
     <em:id>moresnooze@cyrille.nocus</em:id>
     <em:name>More Snooze</em:name>
-    <em:version>1.2.0</em:version>
+    <em:version>1.2.1</em:version>
     <em:type>2</em:type>
     <em:creator>Cyrille Nocus</em:creator>
     <em:contributor>Martin Pecka</em:contributor>
@@ -51,7 +51,7 @@
     <em:targetApplication>
       <Description>
         <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
-        <em:minVersion>60.0</em:minVersion>
+        <em:minVersion>60.5</em:minVersion>
         <em:maxVersion>60.*</em:maxVersion>
       </Description>
     </em:targetApplication>

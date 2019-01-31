@@ -34,6 +34,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-menupopup[type="snooze-menupopup"] > arrowscrollbox {
+menupopup[type="snooze-menupopup"] {
   -moz-binding: url(chrome://moresnooze/content/moresnooze.xml#calendar-snooze-popup);
 }

@@ -51,7 +51,7 @@
    xmlns:xbl="http://www.mozilla.org/xbl"
    xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <binding id="calendar-snooze-popup">
+  <binding id="calendar-snooze-popup" extends="chrome://global/content/bindings/popup.xml#popup">
     <content ignorekeys="true">
       <xul:menuitem oncommand="snoozeItem(event)"/>
       <xul:menuitem oncommand="snoozeItem(event)"/>
@@ -147,7 +147,7 @@
           // The onsnooze attribute is set on the menupopup, this binding is
           // instanciated on the menupopup's arrowscrollbox. Therefore we need
           // to go up one node.
-          let handler = this.parentNode.getAttribute("onsnooze");
+          let handler = this.getAttribute("onsnooze");
           let cancel = false;
           if (handler) {
               let fn = new Function("event", handler);
@@ -179,7 +179,7 @@
 
       <method name="snoozeCancel">
         <body><![CDATA[
-          this.parentNode.hidePopup();
+          this.hidePopup();
         ]]></body>
       </method>
 

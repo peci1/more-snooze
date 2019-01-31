@@ -57,8 +57,8 @@ moreSnoozeChrome.SNOOZE_LIST = [
   {SL_id: "cb_02w", SL_checked: "n", SL_delay: "20160"}
 ];
 
-moreSnoozeChrome.CURRENT_VERSION = "1.2.0";
-moreSnoozeChrome.COMPATIBLES_VERSIONS = ["1.2.0", "1.1.4", "1.1.3", "1.1.2", "1.1.1", "1.1", "1.0.5", "1.0.4", "1.0.3", "1.0.2"];
+moreSnoozeChrome.CURRENT_VERSION = "1.2.1";
+moreSnoozeChrome.COMPATIBLES_VERSIONS = ["1.2.1", "1.2.0", "1.1.4", "1.1.3", "1.1.2", "1.1.1", "1.1", "1.0.5", "1.0.4", "1.0.3", "1.0.2"];
 
 moreSnoozeChrome.in_array = function(tableau, element) {
   var n_compatible = tableau.length;
