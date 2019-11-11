@@ -2,48 +2,47 @@
 <?xml-stylesheet href="chrome://global/skin/"?>
 <?xml-stylesheet href="chrome://moresnooze/skin/moresnooze.css"?>
 
-<!DOCTYPE prefwindow [
-    <!ENTITY % moreSnoozeDTD SYSTEM "chrome://moresnooze/locale/moresnooze.dtd"> %moreSnoozeDTD;
-]>
+<!DOCTYPE dialog SYSTEM "chrome://moresnooze/locale/moresnooze.dtd">
 
-<dialog id="testextension_prefwindow"
+<dialog
   onload="prefs.init()"
   buttons=","
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
-  title="&moreSnooze.prefTitle;">
+  title="&moreSnooze.prefTitle;"
+>
 
   <script src="chrome://moresnooze/content/options-dialog.js"/>
 
   <hbox>
     <vbox id="moresnooze_checkbox_left">
-      <checkbox id="extensions.moresnooze.cb_05m" label="&moreSnooze.cb_05m;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_10m" label="&moreSnooze.cb_10m;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_15m" label="&moreSnooze.cb_15m;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_20m" label="&moreSnooze.cb_20m;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_30m" label="&moreSnooze.cb_30m;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_40m" label="&moreSnooze.cb_40m;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_50m" label="&moreSnooze.cb_50m;" oncommand="prefs.save()"/>
+      <checkbox id="extensions.moresnooze.cb_05m" label="&moreSnooze.cb_05m;" oncommand="prefs.save('cb_05m')"/>
+      <checkbox id="extensions.moresnooze.cb_10m" label="&moreSnooze.cb_10m;" oncommand="prefs.save('cb_10m')"/>
+      <checkbox id="extensions.moresnooze.cb_15m" label="&moreSnooze.cb_15m;" oncommand="prefs.save('cb_15m')"/>
+      <checkbox id="extensions.moresnooze.cb_20m" label="&moreSnooze.cb_20m;" oncommand="prefs.save('cb_20m')"/>
+      <checkbox id="extensions.moresnooze.cb_30m" label="&moreSnooze.cb_30m;" oncommand="prefs.save('cb_30m')"/>
+      <checkbox id="extensions.moresnooze.cb_40m" label="&moreSnooze.cb_40m;" oncommand="prefs.save('cb_40m')"/>
+      <checkbox id="extensions.moresnooze.cb_50m" label="&moreSnooze.cb_50m;" oncommand="prefs.save('cb_50m')"/>
     </vbox>
 
     <vbox id="moresnooze_checkbox_center">
-      <checkbox id="extensions.moresnooze.cb_01h" label="&moreSnooze.cb_01h;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_02h" label="&moreSnooze.cb_02h;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_03h" label="&moreSnooze.cb_03h;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_06h" label="&moreSnooze.cb_06h;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_09h" label="&moreSnooze.cb_09h;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_12h" label="&moreSnooze.cb_12h;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_15h" label="&moreSnooze.cb_15h;" oncommand="prefs.save()"/>
+      <checkbox id="extensions.moresnooze.cb_01h" label="&moreSnooze.cb_01h;" oncommand="prefs.save('cb_01h')"/>
+      <checkbox id="extensions.moresnooze.cb_02h" label="&moreSnooze.cb_02h;" oncommand="prefs.save('cb_02h')"/>
+      <checkbox id="extensions.moresnooze.cb_03h" label="&moreSnooze.cb_03h;" oncommand="prefs.save('cb_03h')"/>
+      <checkbox id="extensions.moresnooze.cb_06h" label="&moreSnooze.cb_06h;" oncommand="prefs.save('cb_06h')"/>
+      <checkbox id="extensions.moresnooze.cb_09h" label="&moreSnooze.cb_09h;" oncommand="prefs.save('cb_09h')"/>
+      <checkbox id="extensions.moresnooze.cb_12h" label="&moreSnooze.cb_12h;" oncommand="prefs.save('cb_12h')"/>
+      <checkbox id="extensions.moresnooze.cb_15h" label="&moreSnooze.cb_15h;" oncommand="prefs.save('cb_15h')"/>
     </vbox>
 
     <vbox id="moresnooze_checkbox_right">
-      <checkbox id="extensions.moresnooze.cb_01d" label="&moreSnooze.cb_01d;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_02d" label="&moreSnooze.cb_02d;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_03d" label="&moreSnooze.cb_03d;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_04d" label="&moreSnooze.cb_04d;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_05d" label="&moreSnooze.cb_05d;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_01w" label="&moreSnooze.cb_01w;" oncommand="prefs.save()"/>
-      <checkbox id="extensions.moresnooze.cb_02w" label="&moreSnooze.cb_02w;" oncommand="prefs.save()"/>
+      <checkbox id="extensions.moresnooze.cb_01d" label="&moreSnooze.cb_01d;" oncommand="prefs.save('cb_01d')"/>
+      <checkbox id="extensions.moresnooze.cb_02d" label="&moreSnooze.cb_02d;" oncommand="prefs.save('cb_02d')"/>
+      <checkbox id="extensions.moresnooze.cb_03d" label="&moreSnooze.cb_03d;" oncommand="prefs.save('cb_03d')"/>
+      <checkbox id="extensions.moresnooze.cb_04d" label="&moreSnooze.cb_04d;" oncommand="prefs.save('cb_04d')"/>
+      <checkbox id="extensions.moresnooze.cb_05d" label="&moreSnooze.cb_05d;" oncommand="prefs.save('cb_05d')"/>
+      <checkbox id="extensions.moresnooze.cb_01w" label="&moreSnooze.cb_01w;" oncommand="prefs.save('cb_01w')"/>
+      <checkbox id="extensions.moresnooze.cb_02w" label="&moreSnooze.cb_02w;" oncommand="prefs.save('cb_02w')"/>
     </vbox>
   </hbox>
 
@@ -55,7 +54,7 @@
     <button
       id="moresnooze_selectall"
       image="chrome://moresnooze/skin/selectall.png"
-      oncommand="prefs.checkbox('select');"
+      oncommand="prefs.checkboxCtrl('select');"
       label=""
       tooltiptext="&moreSnooze.selectall;"
     />
@@ -63,7 +62,7 @@
     <button
       id="moresnooze_deselectall"
       image="chrome://moresnooze/skin/deselectall.png"
-      oncommand="prefs.checkbox('deselect');"
+      oncommand="prefs.checkboxCtrl('deselect');"
       label=""
       tooltiptext="&moreSnooze.deselectall;"
     />
@@ -71,7 +70,7 @@
     <button
       id="moresnooze_reload"
       image="chrome://moresnooze/skin/reload.png"
-      oncommand="prefs.checkbox('reload');"
+      oncommand="prefs.checkboxCtrl('reload');"
       label=""
       tooltiptext="&moreSnooze.reload;"
     />

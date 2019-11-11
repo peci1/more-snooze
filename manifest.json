@@ -5,6 +5,9 @@
   "version": "1.3",
   "author": "Martin Pecka",
   "homepage_url": "https://github.com/peci1/more-snooze",
+  "icons": {
+    "32": "skin/icon.png"
+  },
   "legacy": {
     "type": "xul",
     "options": {

@@ -43,20 +43,23 @@ class Preferences {
 
       element.setAttribute('checked', this.branch.getBoolPref(prefName) ? 'true' : 'false');
     }
-
-    document.addEventListener('dialogaccept', this.save);
   }
 
-  save () {
+  save (prefName) {
+    const element = document.getElementById(`extensions.moresnooze.${prefName}`);
+    this.branch.setBoolPref(prefName, element.getAttribute('checked') === 'true');
+  }
+
+  saveAll () {
     for (const pref of this.preferences) {
       const element = document.getElementById(pref.id);
       const prefName = pref.id.substring(this.branchNameLength);
 
-      this.branch.setBoolPref(prefName, element.getAttribute('checked') == 'true');
+      this.branch.setBoolPref(prefName, element.getAttribute('checked') === 'true');
     }
   }
 
-  checkbox(operation) {
+  checkboxCtrl(operation) {
     const checkboxes = document.querySelectorAll('checkbox');
 
     if(operation === 'select') checkboxes.forEach(cb => cb.checked = true);
@@ -65,7 +68,7 @@ class Preferences {
       cb.checked = this.defaults.includes(cb.id.replace('extensions.moresnooze.', '')) ? true : false;
     });
 
-    this.save();
+    this.saveAll();
   }
 }
 
