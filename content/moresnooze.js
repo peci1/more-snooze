@@ -45,7 +45,7 @@ function buildCustomSnoozeMenu(menus) {
     const items = menu.querySelectorAll('menuitem:not(.unit-menuitem)');
     items.forEach((item) => { item.parentNode.removeChild(item); });
 
-    selectedPrefs.reverse().forEach((pref) => {
+    selectedPrefs.slice().reverse().forEach((pref) => {
       menu.prepend(newMenuItem({ label: pref.label, value: pref.value }));
     });
   });
