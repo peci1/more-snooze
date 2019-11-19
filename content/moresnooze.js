@@ -115,7 +115,6 @@ const prefObserver = {
 prefObserver.register();
 
 const mutationObserver = new MutationObserver(function(mutations) {
-  console.log("hello");
   mutations.forEach(function(mutation) {
     if (mutation.attributeName === 'title') buildCustomSnoozeMenus();
   });
