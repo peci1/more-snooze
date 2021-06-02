@@ -1,0 +1,80 @@
+{
+    "moreSnooze.cb_01d": {
+        "message": "1 dan"
+    },
+    "moreSnooze.cb_01h": {
+        "message": "1 sat"
+    },
+    "moreSnooze.cb_01w": {
+        "message": "1 tjedan"
+    },
+    "moreSnooze.cb_02d": {
+        "message": "2 dana"
+    },
+    "moreSnooze.cb_02h": {
+        "message": "2 sata"
+    },
+    "moreSnooze.cb_02w": {
+        "message": "2 tjedna"
+    },
+    "moreSnooze.cb_03d": {
+        "message": "3 dana"
+    },
+    "moreSnooze.cb_03h": {
+        "message": "3 sata"
+    },
+    "moreSnooze.cb_04d": {
+        "message": "4 dana"
+    },
+    "moreSnooze.cb_05d": {
+        "message": "5 dana"
+    },
+    "moreSnooze.cb_05m": {
+        "message": "5 minuta"
+    },
+    "moreSnooze.cb_06h": {
+        "message": "6 sata"
+    },
+    "moreSnooze.cb_09h": {
+        "message": "9 sata"
+    },
+    "moreSnooze.cb_10m": {
+        "message": "10 minuta"
+    },
+    "moreSnooze.cb_12h": {
+        "message": "12 sata"
+    },
+    "moreSnooze.cb_15h": {
+        "message": "15 sata"
+    },
+    "moreSnooze.cb_15m": {
+        "message": "15 minuta"
+    },
+    "moreSnooze.cb_20m": {
+        "message": "20 minuta"
+    },
+    "moreSnooze.cb_30m": {
+        "message": "30 minuta"
+    },
+    "moreSnooze.cb_40m": {
+        "message": "40 minuta"
+    },
+    "moreSnooze.cb_45m": {
+        "message": "45 minuta"
+    },
+    "moreSnooze.cb_50m": {
+        "message": "50 minuta"
+    },
+    "moreSnooze.deselectall": {
+        "message": "Poništi odabiranje svih stavki"
+    },
+    "moreSnooze.prefTitle": {
+        "message": "Opcije MoreSnooze-a"
+    },
+    "moreSnooze.reload": {
+        "message": "Učitaj ponovno zadane vrijednosti"
+    },
+    "moreSnooze.selectall": {
+        "message": "Odaberi sve stavke"
+    }
+}

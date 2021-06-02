@@ -1,0 +1,80 @@
+{
+    "moreSnooze.cb_01d": {
+        "message": "1 Tag"
+    },
+    "moreSnooze.cb_01h": {
+        "message": "1 Stunde"
+    },
+    "moreSnooze.cb_01w": {
+        "message": "1 Woche"
+    },
+    "moreSnooze.cb_02d": {
+        "message": "2 Tage"
+    },
+    "moreSnooze.cb_02h": {
+        "message": "2 Stunden"
+    },
+    "moreSnooze.cb_02w": {
+        "message": "2 Wochen"
+    },
+    "moreSnooze.cb_03d": {
+        "message": "3 Tage"
+    },
+    "moreSnooze.cb_03h": {
+        "message": "3 Stunden"
+    },
+    "moreSnooze.cb_04d": {
+        "message": "4 Tage"
+    },
+    "moreSnooze.cb_05d": {
+        "message": "5 Tage"
+    },
+    "moreSnooze.cb_05m": {
+        "message": "5 Minuten"
+    },
+    "moreSnooze.cb_06h": {
+        "message": "6 Stunden"
+    },
+    "moreSnooze.cb_09h": {
+        "message": "9 Stunden"
+    },
+    "moreSnooze.cb_10m": {
+        "message": "10 Minuten"
+    },
+    "moreSnooze.cb_12h": {
+        "message": "12 Stunden"
+    },
+    "moreSnooze.cb_15h": {
+        "message": "15 Stunden"
+    },
+    "moreSnooze.cb_15m": {
+        "message": "15 Minuten"
+    },
+    "moreSnooze.cb_20m": {
+        "message": "20 Minuten"
+    },
+    "moreSnooze.cb_30m": {
+        "message": "30 Minuten"
+    },
+    "moreSnooze.cb_40m": {
+        "message": "40 Minuten"
+    },
+    "moreSnooze.cb_45m": {
+        "message": "45 Minuten"
+    },
+    "moreSnooze.cb_50m": {
+        "message": "50 Minuten"
+    },
+    "moreSnooze.deselectall": {
+        "message": "Nichts auswählen"
+    },
+    "moreSnooze.prefTitle": {
+        "message": "MoreSnooze Einstellungen"
+    },
+    "moreSnooze.reload": {
+        "message": "Reload Standardwerte"
+    },
+    "moreSnooze.selectall": {
+        "message": "Alle auswählen"
+    }
+}

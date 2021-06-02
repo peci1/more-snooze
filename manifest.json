@@ -2,24 +2,47 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "author": "Martin Pecka",
   "homepage_url": "https://github.com/peci1/more-snooze",
   "default_locale": "en",
   "icons": {
     "32": "skin/icon.png"
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://moresnooze/content/options-dialog.xul",
-      "open_in_tab": false
-    }
-  },
   "applications": {
     "gecko": {
       "id": "moresnooze@cyrille.nocus",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
+  },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
+    },
+    "LegacyPrefs": {
+      "schema": "api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["LegacyPrefs"]],
+        "script": "api/LegacyPrefs/implementation.js"
+      }
+    }
+  },
+  "permissions" : ["storage"],
+  "background": {
+    "scripts": [
+      "/content/preferences.js",
+      "/content/defaults.js",
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "content/options-dialog.html",
+    "open_in_tab": false
   }
 }

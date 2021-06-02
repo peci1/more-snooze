@@ -39,44 +39,19 @@
 
 'use strict';
 
-Components.utils.import('resource://gre/modules/Preferences.jsm');
-
-const prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
-const prefsList = [
-  { name: 'cb_05m', label: '&moreSnooze.cb_05m;', value: 5 },
-  { name: 'cb_10m', label: '&moreSnooze.cb_10m;', value: 10 },
-  { name: 'cb_15m', label: '&moreSnooze.cb_15m;', value: 15 },
-  { name: 'cb_20m', label: '&moreSnooze.cb_20m;', value: 20 },
-  { name: 'cb_30m', label: '&moreSnooze.cb_30m;', value: 30 },
-  { name: 'cb_40m', label: '&moreSnooze.cb_40m;', value: 40 },
-  { name: 'cb_50m', label: '&moreSnooze.cb_50m;', value: 50 },
-  { name: 'cb_01h', label: '&moreSnooze.cb_01h;', value: 60 },
-  { name: 'cb_02h', label: '&moreSnooze.cb_02h;', value: 120 },
-  { name: 'cb_03h', label: '&moreSnooze.cb_03h;', value: 180 },
-  { name: 'cb_06h', label: '&moreSnooze.cb_06h;', value: 360 },
-  { name: 'cb_09h', label: '&moreSnooze.cb_09h;', value: 540 },
-  { name: 'cb_12h', label: '&moreSnooze.cb_12h;', value: 720 },
-  { name: 'cb_15h', label: '&moreSnooze.cb_15h;', value: 900 },
-  { name: 'cb_01d', label: '&moreSnooze.cb_01d;', value: 1440 },
-  { name: 'cb_02d', label: '&moreSnooze.cb_02d;', value: 2880 },
-  { name: 'cb_03d', label: '&moreSnooze.cb_03d;', value: 4320 },
-  { name: 'cb_04d', label: '&moreSnooze.cb_04d;', value: 5760 },
-  { name: 'cb_05d', label: '&moreSnooze.cb_05d;', value: 7200 },
-  { name: 'cb_01w', label: '&moreSnooze.cb_01w;', value: 10080 },
-  { name: 'cb_02w', label: '&moreSnooze.cb_02w;', value: 20160 },
-];
+var { gMoreSnooze } = ChromeUtils.import("chrome://moresnooze/content/common.js");
 
 function newMenuItem(item) {
   return (
-    MozXULElement.parseXULToFragment(
-      `<menuitem label="${item.label}" value="${item.value}" oncommand="snoozeItem(event)" />`,
+    window.MozXULElement.parseXULToFragment(
+      `<menuitem label="${WL.extension.localeData.localizeMessage(item.label.slice('__MSG_'.length, -2))}" value="${item.value}" oncommand="snoozeItem(event)" />`,
       [ 'chrome://moresnooze/locale/moresnooze.dtd' ]
     )
   );
 }
 
 function buildCustomSnoozeMenus() {
-  const selectedPrefs = prefsList.filter(pref => prefs.getBoolPref(`extensions.moresnooze.${pref.name}`));
+  const selectedPrefs = gMoreSnooze.prefsList.filter(pref => gMoreSnooze.preferences.getPref(pref.name));
   const menus = document.querySelectorAll('[is="calendar-snooze-popup"]');
 
   menus.forEach((menu) => {
@@ -91,36 +66,40 @@ function buildCustomSnoozeMenus() {
 
 const prefObserver = {
   register() {
-    const prefService = Components.classes['@mozilla.org/preferences-service;1']
-                                  .getService(Components.interfaces.nsIPrefService);
-
-    this.branch = prefService.getBranch('extensions.moresnooze.');
-
-    if (!('addObserver' in this.branch)){
-      this.branch.QueryInterface(Components.interfaces.nsIPrefBranch2);
-    }
-
-    this.branch.addObserver('', this, false);
+    gMoreSnooze.preferences.addObserver(this);
   },
 
   unregister() {
-    this.branch.removeObserver('', this);
+    gMoreSnooze.preferences.removeObserver(this);
   },
 
-  observe() {
-    buildCustomSnoozeMenus();
+  observe(topic, data) {
+    if (topic === 'settings-changed')
+      buildCustomSnoozeMenus();
   }
 };
 
-prefObserver.register();
-
-const mutationObserver = new MutationObserver(function(mutations) {
+const mutationObserver = new window.MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
     if (mutation.attributeName === 'title') buildCustomSnoozeMenus();
   });
 });
 
-mutationObserver.observe(
-  document.querySelector('#calendar-alarm-dialog'),
-  { attributes: true }
-);
+function onLoad(activatedWhileWindowOpen) {
+  prefObserver.register();
+  mutationObserver.observe(
+    document.querySelector('#calendar-alarm-dialog'),
+    { attributes: true }
+  );
+}
+
+function onUnload(deactivatedWhileWindowOpen) {
+  // Cleaning up the window UI is only needed when the
+  // add-on is being deactivated/removed while the window
+  // is still open. It can be skipped otherwise.
+  if (!deactivatedWhileWindowOpen) {
+    return;
+  }
+  prefObserver.unregister();
+  mutationObserver.disconnect();
+}

@@ -1,0 +1,80 @@
+{
+    "moreSnooze.cb_01d": {
+        "message": "1 день"
+    },
+    "moreSnooze.cb_01h": {
+        "message": "1 час"
+    },
+    "moreSnooze.cb_01w": {
+        "message": "1 неделя"
+    },
+    "moreSnooze.cb_02d": {
+        "message": "2 дня"
+    },
+    "moreSnooze.cb_02h": {
+        "message": "2 часа"
+    },
+    "moreSnooze.cb_02w": {
+        "message": "2 недели"
+    },
+    "moreSnooze.cb_03d": {
+        "message": "3 дня"
+    },
+    "moreSnooze.cb_03h": {
+        "message": "3 часа"
+    },
+    "moreSnooze.cb_04d": {
+        "message": "4 дня"
+    },
+    "moreSnooze.cb_05d": {
+        "message": "5 дня"
+    },
+    "moreSnooze.cb_05m": {
+        "message": "5 минут"
+    },
+    "moreSnooze.cb_06h": {
+        "message": "6 часа"
+    },
+    "moreSnooze.cb_09h": {
+        "message": "9 часа"
+    },
+    "moreSnooze.cb_10m": {
+        "message": "10 минут"
+    },
+    "moreSnooze.cb_12h": {
+        "message": "12 часа"
+    },
+    "moreSnooze.cb_15h": {
+        "message": "15 часа"
+    },
+    "moreSnooze.cb_15m": {
+        "message": "15 минут"
+    },
+    "moreSnooze.cb_20m": {
+        "message": "20 минут"
+    },
+    "moreSnooze.cb_30m": {
+        "message": "30 минут"
+    },
+    "moreSnooze.cb_40m": {
+        "message": "40 минут"
+    },
+    "moreSnooze.cb_45m": {
+        "message": "45 минут"
+    },
+    "moreSnooze.cb_50m": {
+        "message": "50 минут"
+    },
+    "moreSnooze.deselectall": {
+        "message": "Отменить выделение"
+    },
+    "moreSnooze.prefTitle": {
+        "message": "предпочтения Mорснуза"
+    },
+    "moreSnooze.reload": {
+        "message": "Обновить значения по умолчанию"
+    },
+    "moreSnooze.selectall": {
+        "message": "Выбрать все"
+    }
+}

@@ -1,12 +1,88 @@
 {
-  "extensionName": {
-    "message": "MoreSnooze",
-    "description": "Name of the extension."
-  },
-
-  "extensionDescription": {
-    "message": "Rozšíření, které umožňuje změnit seznam časů, o které je možno odložit připomínky událostí.",
-    "description": "Description of the extension."
-  }
-
+    "extensionDescription": {
+        "description": "Description of the extension.",
+        "message": "Rozšíření, které umožňuje změnit seznam časů, o které je možno odložit připomínky událostí."
+    },
+    "extensionName": {
+        "description": "Name of the extension.",
+        "message": "MoreSnooze"
+    },
+    "moreSnooze.cb_01d": {
+        "message": "1 den"
+    },
+    "moreSnooze.cb_01h": {
+        "message": "1 hodinu"
+    },
+    "moreSnooze.cb_01w": {
+        "message": "1 týden"
+    },
+    "moreSnooze.cb_02d": {
+        "message": "2 dny"
+    },
+    "moreSnooze.cb_02h": {
+        "message": "2 hodiny"
+    },
+    "moreSnooze.cb_02w": {
+        "message": "2 týdny"
+    },
+    "moreSnooze.cb_03d": {
+        "message": "3 dny"
+    },
+    "moreSnooze.cb_03h": {
+        "message": "3 hodiny"
+    },
+    "moreSnooze.cb_04d": {
+        "message": "4 dny"
+    },
+    "moreSnooze.cb_05d": {
+        "message": "5 dnů"
+    },
+    "moreSnooze.cb_05m": {
+        "message": "5 minut"
+    },
+    "moreSnooze.cb_06h": {
+        "message": "6 hodin"
+    },
+    "moreSnooze.cb_09h": {
+        "message": "9 hodin"
+    },
+    "moreSnooze.cb_10m": {
+        "message": "10 minut"
+    },
+    "moreSnooze.cb_12h": {
+        "message": "12 hodin"
+    },
+    "moreSnooze.cb_15h": {
+        "message": "15 hodin"
+    },
+    "moreSnooze.cb_15m": {
+        "message": "15 minut"
+    },
+    "moreSnooze.cb_20m": {
+        "message": "20 minut"
+    },
+    "moreSnooze.cb_30m": {
+        "message": "30 minut"
+    },
+    "moreSnooze.cb_40m": {
+        "message": "40 minut"
+    },
+    "moreSnooze.cb_45m": {
+        "message": "45 minut"
+    },
+    "moreSnooze.cb_50m": {
+        "message": "50 minut"
+    },
+    "moreSnooze.deselectall": {
+        "message": "Zrušit výběr"
+    },
+    "moreSnooze.prefTitle": {
+        "message": "Nastavení MoreSnooze"
+    },
+    "moreSnooze.reload": {
+        "message": "Načíst výchozí hodnoty"
+    },
+    "moreSnooze.selectall": {
+        "message": "Vybrat vše"
+    }
 }

@@ -1,59 +1,51 @@
 {
-    "extensionDescription": {
-        "description": "Description of the extension.",
-        "message": "Customize the snooze times menu when snoozing calendar event alarms."
-    },
-    "extensionName": {
-        "description": "Name of the extension.",
-        "message": "MoreSnooze"
-    },
     "moreSnooze.cb_01d": {
-        "message": "1 day"
+        "message": "1 jour"
     },
     "moreSnooze.cb_01h": {
-        "message": "1 hour"
+        "message": "1 heure"
     },
     "moreSnooze.cb_01w": {
-        "message": "1 week"
+        "message": "1 semaine"
     },
     "moreSnooze.cb_02d": {
-        "message": "2 days"
+        "message": "2 jours"
     },
     "moreSnooze.cb_02h": {
-        "message": "2 hours"
+        "message": "2 heures"
     },
     "moreSnooze.cb_02w": {
-        "message": "2 weeks"
+        "message": "2 semaines"
     },
     "moreSnooze.cb_03d": {
-        "message": "3 days"
+        "message": "3 jours"
     },
     "moreSnooze.cb_03h": {
-        "message": "3 hours"
+        "message": "3 heures"
     },
     "moreSnooze.cb_04d": {
-        "message": "4 days"
+        "message": "4 jours"
     },
     "moreSnooze.cb_05d": {
-        "message": "5 days"
+        "message": "5 jours"
     },
     "moreSnooze.cb_05m": {
         "message": "5 minutes"
     },
     "moreSnooze.cb_06h": {
-        "message": "6 hours"
+        "message": "6 heures"
     },
     "moreSnooze.cb_09h": {
-        "message": "9 hours"
+        "message": "9 heures"
     },
     "moreSnooze.cb_10m": {
         "message": "10 minutes"
     },
     "moreSnooze.cb_12h": {
-        "message": "12 hours"
+        "message": "12 heures"
     },
     "moreSnooze.cb_15h": {
-        "message": "15 hours"
+        "message": "15 heures"
     },
     "moreSnooze.cb_15m": {
         "message": "15 minutes"
@@ -74,15 +66,15 @@
         "message": "50 minutes"
     },
     "moreSnooze.deselectall": {
-        "message": "Deselect all items"
+        "message": "Tout désélectionner"
     },
     "moreSnooze.prefTitle": {
-        "message": "MoreSnooze Preferences"
+        "message": "Preferences de MoreSnooze"
     },
     "moreSnooze.reload": {
-        "message": "Reload default values"
+        "message": "Recharger les valeurs par défaut"
     },
     "moreSnooze.selectall": {
-        "message": "Select all items"
+        "message": "Tout sélectionner"
     }
 }

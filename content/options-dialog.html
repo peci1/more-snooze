@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title>__MSG_moreSnooze.prefTitle__</title>
+
+  <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
+  <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
+  <link rel='stylesheet' type='text/css' href="resource://moresnooze/skin/moresnooze.css">
+</head>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is MoreSnooze Extension code.
+   -
+   - The Initial Developer of the Original Code is
+   - Cyrille Nocus
+   - Portions created by the Initial Developer are Copyright (C) 2010
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   - Martin Pecka
+   - James Hibbard
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<body>
+
+  <table>
+    <tr id="moresnooze_checkbox_left">
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_05m"/> __MSG_moresnooze.cb_05m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_10m"/> __MSG_moresnooze.cb_10m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_15m"/> __MSG_moresnooze.cb_15m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_20m"/> __MSG_moresnooze.cb_20m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_30m"/> __MSG_moresnooze.cb_30m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_40m"/> __MSG_moresnooze.cb_40m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_45m"/> __MSG_moresnooze.cb_45m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_50m"/> __MSG_moresnooze.cb_50m__</label></td>
+    </tr>
+
+    <tr id="moresnooze_checkbox_center">
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_01h"/> __MSG_moresnooze.cb_01h__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_02h"/> __MSG_moresnooze.cb_02h__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_03h"/> __MSG_moresnooze.cb_03h__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_06h"/> __MSG_moresnooze.cb_06h__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_09h"/> __MSG_moresnooze.cb_09h__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_12h"/> __MSG_moresnooze.cb_12h__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_15h"/> __MSG_moresnooze.cb_15h__</label></td>
+    </tr>
+
+    <tr id="moresnooze_checkbox_right">
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_01d"/> __MSG_moresnooze.cb_01d__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_02d"/> __MSG_moresnooze.cb_02d__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_03d"/> __MSG_moresnooze.cb_03d__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_04d"/> __MSG_moresnooze.cb_04d__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_05d"/> __MSG_moresnooze.cb_05d__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_01w"/> __MSG_moresnooze.cb_01w__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_02w"/> __MSG_moresnooze.cb_02w__</label></td>
+    </tr>
+  </table>
+
+  <p></p>
+
+  <div>
+    <button id="moresnooze_selectall"><img src="resource://moresnooze/skin/selectall.png" alt="__MSG_moreSnooze.selectall__" /></button>
+    <button id="moresnooze_deselectall"><img src="resource://moresnooze/skin/deselectall.png" alt="__MSG_moreSnooze.deselectall__" /></button>
+    <button id="moresnooze_reload"><img src="resource://moresnooze/skin/reload.png" alt="__MSG_moreSnooze.reload__" /></button>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="defaults.js"></script>
+  <script src="options-dialog.js"></script>
+</body>
