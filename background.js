@@ -21,11 +21,13 @@ async function main() {
     }
   }
 
-  browser.storage.sync.get(null, function(items) { console.log(`MoreSnooze preferences are: ${JSON.stringify(items, null, 2)}`); });
+  browser.storage[userPrefStorageArea].get(null, function(items) {
+    console.log(`MoreSnooze preferences are: ${JSON.stringify(items, null, 2)}`);
+  });
 
   messenger.WindowListener.registerChromeUrl([
     ["content", "moresnooze", "content/" ],
-    ["resource", "moresnooze", "classic/1.0", "skin/"],
+    ["resource", "moresnooze", "skin/"],
     ["locale", "moresnooze", "cs-CZ", "locale/cs-CZ/"],
     ["locale", "moresnooze", "de-DE", "locale/de-DE/"],
     ["locale", "moresnooze", "en-US", "locale/en-US/"],
@@ -38,12 +40,9 @@ async function main() {
     ["locale", "moresnooze", "ru-RU", "locale/ru-RU/"]
   ]);
 
-  messenger.WindowListener.registerOptionsPage("chrome://moresnooze/content/options-dialog.html");
   messenger.WindowListener.registerStartupScript("chrome://moresnooze/content/startup.js");
 
   messenger.WindowListener.registerWindow("chrome://calendar/content/calendar-alarm-dialog.xhtml",  "chrome://moresnooze/content/moresnooze.js");
-
-  //messenger.WindowListener.registerShutdownScript("chrome://quicktext/content/scripts/shutdown.js");
 
   messenger.WindowListener.startListening();
 }

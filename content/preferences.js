@@ -33,7 +33,8 @@ const defaultPrefPrefix = "pref.defaults.";
 // Even though Thunderbird does not actually have a sync backend, storage.sync
 // is not cleared on add-on removal to mimic syncing stored values.
 // Hint: Reloading/Updating an add-on does not clear storage.local.
-const userPrefStorageArea = "sync";
+//const userPrefStorageArea = "sync";
+const userPrefStorageArea = "local";
 
 var preferences = {
 
@@ -47,7 +48,7 @@ var preferences = {
   removeObserver: function(o)
   {
     for (var i = 0; i < this._observers.length; i++) {
-      if (this._observers[i] == o)
+      if (this._observers[i] === o)
         this._observers.splice(i, 1);
     }
   },

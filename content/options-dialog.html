@@ -7,7 +7,7 @@
 
   <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
   <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
-  <link rel='stylesheet' type='text/css' href="resource://moresnooze/skin/moresnooze.css">
+  <link rel='stylesheet' type='text/css' href="resource://moresnooze/moresnooze.css">
 </head>
 
 <!-- ***** BEGIN LICENSE BLOCK *****
@@ -51,47 +51,63 @@
 <body>
 
   <table>
-    <tr id="moresnooze_checkbox_left">
+    <tr>
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_05m"/> __MSG_moresnooze.cb_05m__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_10m"/> __MSG_moresnooze.cb_10m__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_15m"/> __MSG_moresnooze.cb_15m__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_20m"/> __MSG_moresnooze.cb_20m__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_30m"/> __MSG_moresnooze.cb_30m__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_40m"/> __MSG_moresnooze.cb_40m__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_45m"/> __MSG_moresnooze.cb_45m__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_50m"/> __MSG_moresnooze.cb_50m__</label></td>
-    </tr>
-
-    <tr id="moresnooze_checkbox_center">
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_01h"/> __MSG_moresnooze.cb_01h__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_02h"/> __MSG_moresnooze.cb_02h__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_03h"/> __MSG_moresnooze.cb_03h__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_06h"/> __MSG_moresnooze.cb_06h__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_09h"/> __MSG_moresnooze.cb_09h__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_12h"/> __MSG_moresnooze.cb_12h__</label></td>
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_15h"/> __MSG_moresnooze.cb_15h__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_01d"/> __MSG_moresnooze.cb_01d__</label></td>
     </tr>
 
-    <tr id="moresnooze_checkbox_right">
-      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_01d"/> __MSG_moresnooze.cb_01d__</label></td>
+    <tr>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_10m"/> __MSG_moresnooze.cb_10m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_02h"/> __MSG_moresnooze.cb_02h__</label></td>
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_02d"/> __MSG_moresnooze.cb_02d__</label></td>
+    </tr>
+
+    <tr>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_15m"/> __MSG_moresnooze.cb_15m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_03h"/> __MSG_moresnooze.cb_03h__</label></td>
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_03d"/> __MSG_moresnooze.cb_03d__</label></td>
+    </tr>
+
+    <tr>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_20m"/> __MSG_moresnooze.cb_20m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_06h"/> __MSG_moresnooze.cb_06h__</label></td>
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_04d"/> __MSG_moresnooze.cb_04d__</label></td>
+    </tr>
+
+    <tr>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_30m"/> __MSG_moresnooze.cb_30m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_09h"/> __MSG_moresnooze.cb_09h__</label></td>
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_05d"/> __MSG_moresnooze.cb_05d__</label></td>
+    </tr>
+
+    <tr>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_40m"/> __MSG_moresnooze.cb_40m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_12h"/> __MSG_moresnooze.cb_12h__</label></td>
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_01w"/> __MSG_moresnooze.cb_01w__</label></td>
+    </tr>
+
+    <tr>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_45m"/> __MSG_moresnooze.cb_45m__</label></td>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_15h"/> __MSG_moresnooze.cb_15h__</label></td>
       <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_02w"/> __MSG_moresnooze.cb_02w__</label></td>
+    </tr>
+
+    <tr>
+      <td><label class="checkbox"><input type="checkbox" id="moresnooze.cb_50m"/> __MSG_moresnooze.cb_50m__</label></td>
     </tr>
   </table>
 
   <p></p>
 
   <div>
-    <button id="moresnooze_selectall"><img src="resource://moresnooze/skin/selectall.png" alt="__MSG_moreSnooze.selectall__" /></button>
-    <button id="moresnooze_deselectall"><img src="resource://moresnooze/skin/deselectall.png" alt="__MSG_moreSnooze.deselectall__" /></button>
-    <button id="moresnooze_reload"><img src="resource://moresnooze/skin/reload.png" alt="__MSG_moreSnooze.reload__" /></button>
+    <button id="moresnooze_selectall"><img src="resource://moresnooze/selectall.png" alt="__MSG_moreSnooze.selectall__" /></button>
+    <button id="moresnooze_deselectall"><img src="resource://moresnooze/deselectall.png" alt="__MSG_moreSnooze.deselectall__" /></button>
+    <button id="moresnooze_reload"><img src="resource://moresnooze/reload.png" alt="__MSG_moreSnooze.reload__" /></button>
   </div>
 
   <script src="i18n.js"></script>
   <script src="defaults.js"></script>
+  <script src="preferences.js"></script>
   <script src="options-dialog.js"></script>
 </body>

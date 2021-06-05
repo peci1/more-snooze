@@ -40,24 +40,26 @@ class Preferences {
 
   async init() {
     i18n.updateDocument();
+    preferences.init().then(prefs.checkBoxes);
+  }
 
-    for (const pref of defaultPrefsList) {
-      const element = document.getElementById(pref.id);
+  checkBoxes() {
+    for (const element of document.getElementsByTagName("input"))
+    {
+      const pref = element.id.split('.')[1];
+      element.checked = preferences.getPref(pref, false);
       element.onchange = cb => prefs.save(cb.target.id);
     }
   }
 
   save (prefName) {
     const element = document.getElementById(prefName);
-    // this.branch.setBoolPref(prefName, element.getAttribute('checked') === 'true');
+    preferences.setPref(prefName.split('.')[1], element.checked);
   }
 
   saveAll () {
-    for (const pref of defaultPrefsList) {
-      const element = document.getElementById(pref.id);
-
-      // this.branch.setBoolPref(prefName, element.getAttribute('checked') === 'true');
-    }
+    for (const element of document.getElementsByTagName("input"))
+      prefs.save(element.id);
   }
 
   checkboxCtrl(operation) {

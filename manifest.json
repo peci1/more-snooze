@@ -44,5 +44,10 @@
   "options_ui": {
     "page": "content/options-dialog.html",
     "open_in_tab": false
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "moresnooze@cyrille.nocus"
+    }
   }
 }
