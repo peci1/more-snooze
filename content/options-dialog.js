@@ -40,14 +40,14 @@ class Preferences {
 
   async init() {
     i18n.updateDocument();
-    preferences.init().then(prefs.checkBoxes);
+    preferences.initCache().then(prefs.checkBoxes);
   }
 
   checkBoxes() {
     for (const element of document.getElementsByTagName("input"))
     {
       const pref = element.id.split('.')[1];
-      element.checked = preferences.getPref(pref, false);
+      element.checked = preferences.getPref(pref);
       element.onchange = cb => prefs.save(cb.target.id);
     }
   }
@@ -75,6 +75,8 @@ class Preferences {
   }
 }
 
+// For simplicity we keep using our own Preference handling here, as the functionality provided by
+// preferences.js is slightly different.
 const prefs = new Preferences;
 
 document.addEventListener("DOMContentLoaded", prefs.init);
