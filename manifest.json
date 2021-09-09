@@ -23,21 +23,13 @@
         "paths": [["WindowListener"]],
         "script": "api/WindowListener/implementation.js"
       }
-    },
-    "LegacyPrefs": {
-      "schema": "api/LegacyPrefs/schema.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["LegacyPrefs"]],
-        "script": "api/LegacyPrefs/implementation.js"
-      }
     }
   },
   "permissions" : ["storage"],
   "background": {
     "scripts": [
-      "/content/preferences.js",
-      "/content/defaults.js",
+      "/content/fields.js",
+      "/content/localStorageHandler.js",
       "background.js"
     ]
   },
