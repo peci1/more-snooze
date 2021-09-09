@@ -68,7 +68,7 @@ class Preferences {
     if(operation === 'select') checkboxes.forEach(cb => cb.checked = true);
     if(operation === 'deselect') checkboxes.forEach(cb => cb.checked = false);
     if(operation === 'reload') checkboxes.forEach((cb) => {
-      cb.checked = defaultPrefsList.filter(pref => pref.name === cb.id.replace('moresnooze.', '') && pref.default).length > 0;
+      cb.checked = fieldList.filter(pref => pref.id === cb.id && pref.default).length > 0;
     });
 
     this.saveAll();
