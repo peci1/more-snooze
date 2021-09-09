@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "3.0.0",
+  "version": "3.1",
   "author": "Martin Pecka",
   "homepage_url": "https://github.com/peci1/more-snooze",
   "default_locale": "en",
@@ -12,7 +12,8 @@
   "applications": {
     "gecko": {
       "id": "moresnooze@cyrille.nocus",
-      "strict_min_version": "78.0"
+      "strict_min_version": "78.0",
+      "strict_max_version": "91.*"
     }
   },
   "experiment_apis": {
@@ -24,20 +25,20 @@
         "script": "api/WindowListener/implementation.js"
       }
     },
-    "LegacyPrefs": {
-      "schema": "api/LegacyPrefs/schema.json",
+    "NotifyTools": {
+      "schema": "api/NotifyTools/schema.json",
       "parent": {
         "scopes": ["addon_parent"],
-        "paths": [["LegacyPrefs"]],
-        "script": "api/LegacyPrefs/implementation.js"
+        "paths": [["NotifyTools"]],
+        "script": "api/NotifyTools/implementation.js"
       }
     }
   },
   "permissions" : ["storage"],
   "background": {
     "scripts": [
-      "/content/preferences.js",
-      "/content/defaults.js",
+      "/content/fields.js",
+      "/content/localStorageHandler.js",
       "background.js"
     ]
   },

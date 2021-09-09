@@ -40,14 +40,14 @@ class Preferences {
 
   async init() {
     i18n.updateDocument();
-    preferences.init().then(prefs.checkBoxes);
+    preferences.initCache().then(prefs.checkBoxes);
   }
 
   checkBoxes() {
     for (const element of document.getElementsByTagName("input"))
     {
       const pref = element.id.split('.')[1];
-      element.checked = preferences.getPref(pref, false);
+      element.checked = preferences.getPref(pref);
       element.onchange = cb => prefs.save(cb.target.id);
     }
   }
@@ -68,13 +68,15 @@ class Preferences {
     if(operation === 'select') checkboxes.forEach(cb => cb.checked = true);
     if(operation === 'deselect') checkboxes.forEach(cb => cb.checked = false);
     if(operation === 'reload') checkboxes.forEach((cb) => {
-      cb.checked = defaultPrefsList.filter(pref => pref.name === cb.id.replace('moresnooze.', '') && pref.default).length > 0;
+      cb.checked = fieldList.filter(pref => pref.id === cb.id && pref.default).length > 0;
     });
 
     this.saveAll();
   }
 }
 
+// For simplicity we keep using our own Preference handling here, as the functionality provided by
+// preferences.js is slightly different.
 const prefs = new Preferences;
 
 document.addEventListener("DOMContentLoaded", prefs.init);
