@@ -27,17 +27,7 @@ async function main() {
 
   messenger.WindowListener.registerChromeUrl([
     ["content", "moresnooze", "content/" ],
-    ["resource", "moresnooze", "skin/"],
-    ["locale", "moresnooze", "cs-CZ", "locale/cs-CZ/"],
-    ["locale", "moresnooze", "de-DE", "locale/de-DE/"],
-    ["locale", "moresnooze", "en-US", "locale/en-US/"],
-    ["locale", "moresnooze", "es-ES", "locale/es-ES/"],
-    ["locale", "moresnooze", "fr-FR", "locale/fr-FR/"],
-    ["locale", "moresnooze", "hr-HR", "locale/hr-HR/"],
-    ["locale", "moresnooze", "it-IT", "locale/it-IT/"],
-    ["locale", "moresnooze", "nl-NL", "locale/nl-NL/"],
-    ["locale", "moresnooze", "pt-PT", "locale/pt-PT/"],
-    ["locale", "moresnooze", "ru-RU", "locale/ru-RU/"]
+    ["resource", "moresnooze", "skin/"]
   ]);
 
   messenger.WindowListener.registerStartupScript("chrome://moresnooze/content/startup.js");
