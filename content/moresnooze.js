@@ -44,8 +44,7 @@ var { gMoreSnooze } = ChromeUtils.import("chrome://moresnooze/content/common.js"
 function newMenuItem(item) {
   return (
     window.MozXULElement.parseXULToFragment(
-      `<menuitem label="${WL.extension.localeData.localizeMessage(item.label.slice('__MSG_'.length, -2))}" value="${item.value}" oncommand="snoozeItem(event)" />`,
-      [ 'chrome://moresnooze/locale/moresnooze.dtd' ]
+      `<menuitem label="${WL.extension.localeData.localizeMessage(item.label.slice('__MSG_'.length, -2))}" value="${item.value}" oncommand="snoozeItem(event)" />`
     )
   );
 }
