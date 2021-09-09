@@ -38,19 +38,20 @@
 /* global document, MutationObserver, Components, MozXULElement */
 
 'use strict';
-
-var { gMoreSnooze } = ChromeUtils.import("chrome://moresnooze/content/common.js");
+Services.scriptloader.loadSubScript("chrome://moresnooze/content/notifyTools.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://moresnooze/content/preferences.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://moresnooze/content/fields.js", window, "UTF-8");
 
 function newMenuItem(item) {
   return (
     window.MozXULElement.parseXULToFragment(
-      `<menuitem label="${WL.extension.localeData.localizeMessage(item.label.slice('__MSG_'.length, -2))}" value="${item.value}" oncommand="snoozeItem(event)" />`
+      `<menuitem label="${WL.extension.localeData.localizeMessage(item.id)}" value="${item.value}" oncommand="snoozeItem(event)" />`
     )
   );
 }
 
 function buildCustomSnoozeMenus() {
-  const selectedPrefs = gMoreSnooze.prefsList.filter(pref => gMoreSnooze.preferences.getPref(pref.name));
+  const selectedPrefs = window.fieldList.filter(pref => window.preferences.getPref(pref.name));
   const menus = document.querySelectorAll('[is="calendar-snooze-popup"]');
 
   menus.forEach((menu) => {
@@ -58,25 +59,10 @@ function buildCustomSnoozeMenus() {
     items.forEach((item) => { item.parentNode.removeChild(item); });
 
     [...selectedPrefs].reverse().forEach((pref) => {
-      menu.prepend(newMenuItem({ label: pref.label, value: pref.value }));
+      menu.prepend(newMenuItem(pref));
     });
   });
 }
-
-const prefObserver = {
-  register() {
-    gMoreSnooze.preferences.addObserver(this);
-  },
-
-  unregister() {
-    gMoreSnooze.preferences.removeObserver(this);
-  },
-
-  observe(topic, data) {
-    if (topic === 'settings-changed')
-      buildCustomSnoozeMenus();
-  }
-};
 
 const mutationObserver = new window.MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
@@ -84,8 +70,15 @@ const mutationObserver = new window.MutationObserver(function(mutations) {
   });
 });
 
-function onLoad(activatedWhileWindowOpen) {
-  prefObserver.register();
+async function onLoad(activatedWhileWindowOpen) {
+  // NotfyTools usually get enabled automatically, but not in when overlayed.
+  // They enable is needed by the preference script to get notified on pref
+  // changes by the background script.
+  window.notifyTools.enable();
+  await window.preferences.initCache();
+  window.preferences.registerOnChangeListener(buildCustomSnoozeMenus);
+
+  buildCustomSnoozeMenus();
   mutationObserver.observe(
     document.querySelector('#calendar-alarm-dialog'),
     { attributes: true }
@@ -99,6 +92,6 @@ function onUnload(deactivatedWhileWindowOpen) {
   if (!deactivatedWhileWindowOpen) {
     return;
   }
-  prefObserver.unregister();
+  window.notifyTools.disable();
   mutationObserver.disconnect();
 }
