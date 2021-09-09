@@ -5,7 +5,8 @@
  * For usage descriptions, please check:
  * https://github.com/thundernest/addon-developer-support/tree/master/scripts/preferences
  *
- * Version: 2.1
+ * Version: 2.2
+ *  - added registerOnChangeListener();
  *
  * Author (parts): John Bieling (john@thunderbird.net)
  *
@@ -26,6 +27,8 @@ var preferences = {
 
   _prefElements: [],
   _preferencesLoaded: false,
+
+  _onChangeCallback: null,
 
   // Function to cache preferences locally to be able to use get/set/clearPref()
   // synchronously. If initCache() is not called, get/set/clearPref() will make
@@ -55,6 +58,10 @@ var preferences = {
     this._initListeners();
   },
 
+  registerOnChangeListener: function(callback) {
+    this._onChangeCallback = callback.bind(this);
+  },
+
   _initListeners: function () {
     if (this._listenersInitialized) return;
 
@@ -62,31 +69,36 @@ var preferences = {
       // Register a listener for messages from the background
       // to update a preference.
       messenger.runtime.onMessage.addListener(
-        preferences._updatesFromBackground
+        this._updatesFromBackground.bind(this)
       );
     } else if (typeof notifyTools == "object") {
       // Register a listener for notifications from the background
       // to update a preference.
-      notifyTools.registerListener(preferences._updatesFromBackground);
+      notifyTools.registerListener(
+        this._updatesFromBackground.bind(this)
+      );
     }
     this._listenersInitialized = true;
   },
 
   _updatesFromBackground: function (info) {
     if (info.command == "setPref") {
-      preferences._localPrefsCache[info.name] = info.value;
+      this._localPrefsCache[info.name] = info.value;
     }
     if (info.command == "clearPref") {
-      if (preferences._localPrefsCache.hasOwnProperty(info.name)) {
-        delete preferences._localPrefsCache[info.name];
+      if (this._localPrefsCache.hasOwnProperty(info.name)) {
+        delete this._localPrefsCache[info.name];
       }
     }
     if (info.command == "setDefault") {
-      preferences._localDefaultsCache[info.name] = info.value;
+      this._localDefaultsCache[info.name] = info.value;
     }
 
     // If this preference was loaded into the UI, update its value.
-    preferences._updateElements(info.name);
+    this._updateElements(info.name);    
+    if (this._onChangeCallback) {
+      this._onChangeCallback(info);
+    }
   },
 
   // Returns a value from the local cache if initCache() has been called, or a Promise
