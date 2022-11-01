@@ -38,9 +38,19 @@
 /* global document, MutationObserver, Components, MozXULElement */
 
 'use strict';
-Services.scriptloader.loadSubScript("chrome://moresnooze/content/notifyTools.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://moresnooze/content/preferences.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://moresnooze/content/fields.js", window, "UTF-8");
+
+const ADDON_ID = "moresnooze@cyrille.nocus";
+
+let {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+let {ExtensionParent} = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+
+let extension = ExtensionParent.GlobalManager.getExtension(ADDON_ID);
+
+window.moreSnooze = {};
+
+Services.scriptloader.loadSubScript(extension.rootURI.resolve("content/notifyTools.js"), window.moreSnooze, "UTF-8");
+Services.scriptloader.loadSubScript(extension.rootURI.resolve("content/preferences.js"), window.moreSnooze, "UTF-8");
+Services.scriptloader.loadSubScript(extension.rootURI.resolve("content/fields.js"), window.moreSnooze, "UTF-8");
 
 function newMenuItem(item) {
   return (
@@ -51,8 +61,10 @@ function newMenuItem(item) {
 }
 
 function buildCustomSnoozeMenus() {
-  const selectedPrefs = window.fieldList.filter(pref => window.preferences.getPref(pref.name));
+  const selectedPrefs = window.moreSnooze.fieldList.filter(pref => window.moreSnooze.preferences.getPref(pref.name));
   const menus = document.querySelectorAll('[is="calendar-snooze-popup"]');
+
+  console.log("MoreSnooze: Patch popups.")
 
   menus.forEach((menu) => {
     const items = menu.querySelectorAll('menuitem:not(.unit-menuitem)');
@@ -64,34 +76,54 @@ function buildCustomSnoozeMenus() {
   });
 }
 
-const mutationObserver = new window.MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    if (mutation.attributeName === 'title') buildCustomSnoozeMenus();
-  });
-});
+function mutationCallback(mutations) {
+  if (mutations.length > 0) {
+    buildCustomSnoozeMenus();
+  }
+}
+
+// Resolution of bug https://bugzilla.mozilla.org/show_bug.cgi?id=1703164 changed the dialog from
+// <dialog title=""> to <html><head><title>...</...>. To support both notations, we listen both for
+// changes of the title attribute of the dialog tag and for changes of the title tag.
+const mutationObserverOld = new window.MutationObserver(mutationCallback);
+const mutationObserverNew = new window.MutationObserver(mutationCallback);
 
 async function onLoad(activatedWhileWindowOpen) {
-  // NotfyTools usually get enabled automatically, but not in when overlayed.
-  // They enable is needed by the preference script to get notified on pref
-  // changes by the background script.
-  window.notifyTools.enable();
-  await window.preferences.initCache();
-  window.preferences.registerOnChangeListener(buildCustomSnoozeMenus);
+  console.log("MoreSnooze: Loading.");
+
+  window.moreSnooze.notifyTools.setAddOnId(ADDON_ID);
+  await window.moreSnooze.preferences.initCache();
+  window.moreSnooze.preferences.registerOnChangeListener(function () {
+    console.log("MoreSnooze: Preferences changed.")
+    buildCustomSnoozeMenus();
+  });
 
   buildCustomSnoozeMenus();
-  mutationObserver.observe(
+
+  mutationObserverOld.observe(
     document.querySelector('#calendar-alarm-dialog'),
-    { attributes: true }
+    { attributes: true, attributeFilter: ['title'] }
   );
+  mutationObserverNew.observe(
+    document.querySelector('#calendar-alarm-dialog head title'),
+    { childList: true }
+  );
+
+  console.log("MoreSnooze: Loaded.");
 }
 
 function onUnload(deactivatedWhileWindowOpen) {
+  console.log("MoreSnooze: Unloading.");
+
   // Cleaning up the window UI is only needed when the
   // add-on is being deactivated/removed while the window
   // is still open. It can be skipped otherwise.
   if (!deactivatedWhileWindowOpen) {
     return;
   }
-  window.notifyTools.disable();
-  mutationObserver.disconnect();
+  window.moreSnooze.notifyTools.removeAllListeners();
+  mutationObserverOld.disconnect();
+  mutationObserverNew.disconnect();
+
+  console.log("MoreSnooze: Unloaded.");
 }

@@ -9,13 +9,13 @@ async function main() {
   // Handle request from preferences.js. See
   // https://github.com/thundernest/addon-developer-support/tree/master/scripts/preferences/
   // The localStorageHandler also takes care of default prefs.
-  localStorageHandler.init(defaults);
-  localStorageHandler.enableListeners();
+  await localStorageHandler.init(defaults);
+  await localStorageHandler.enableListeners();
   
   // Test if our localStorageHandler is working properly.
   for (let pref of Object.keys(defaults)) {
-    console.log(`MoreSnooze preferences are: ${pref} = ${await localStorageHandler.getPref(pref)}`);
-  };
+    console.log(`MoreSnooze: Preferences are ${pref} = ${await localStorageHandler.getPref(pref)}`);
+  }
    
   messenger.WindowListener.registerChromeUrl([
     ["content", "moresnooze", "content/" ],
@@ -23,7 +23,7 @@ async function main() {
   ]);
 
   messenger.WindowListener.registerWindow("chrome://calendar/content/calendar-alarm-dialog.xhtml",  "chrome://moresnooze/content/moresnooze.js");
-  messenger.WindowListener.startListening();
+  await messenger.WindowListener.startListening();
 }
 
 main();
