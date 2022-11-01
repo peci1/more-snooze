@@ -76,6 +76,21 @@ function buildCustomSnoozeMenus() {
   });
 }
 
+// The main idea for hooking after the event which creates the snooze popups is the following sequence of calls:
+// CalAlarmMonitor.jsm:      function onAlarm(aItem, aAlarm)
+//                             calAlarmWindow.addWidgetFor(aItem, aAlarm);
+// calendar-alarm-dialog.js:     function addWidgetFor(aItem, aAlarm)
+//                                 let widget = document.createXULElement("richlistitem", {
+//                                   is: "calendar-alarm-widget-richlistitem",
+//                                 });
+//                                 let alarmRichlist = document.getElementById("alarm-richlist");
+//
+//                                 // Add widgets sorted by start date ascending
+//                                 ...
+//                                 setupTitle()
+//                                   document.title = title.replace("#1", reminders);
+// So we wait for the assignment to document.title to happen and hook that event via mutation observers.
+
 function mutationCallback(mutations) {
   if (mutations.length > 0) {
     buildCustomSnoozeMenus();
