@@ -42,3 +42,10 @@
 #moresnooze_selectall,
 #moresnooze_deselectall,
 #moresnooze_reload { min-width: 20px; }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #23222b;
+        color: rgb(249, 249, 250);
+    }
+}

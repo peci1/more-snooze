@@ -1,9 +1,14 @@
-[![Gitter](https://badges.gitter.im/more-snooze/community.svg)](https://gitter.im/more-snooze/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
 # More Snooze 
 
-A Thunderbird and Lightning addon which allows to **customize the snooze times menu when snoozing calendar event alarms**.
+A [Thunderbird and Lightning addon](https://addons.thunderbird.net/cs/thunderbird/addon/more-snooze/) which allows to **customize the snooze times menu when snoozing calendar event alarms**.
 
-Version 1.x is for Thunderbird up to version 67. Version 2.x is for Thunderbird 68 and newer. Version 3.x is for Thunderbird 78 and newer.
+## Compatibility Table
+
+| Addon Version | Thunderbird Versions |
+|---------------|----------------------|
+| 3.3+          | \>= 102              |
+| 3.0 - 3.2     | 78 - 101             |
+| 2.*           | 68 - 77              |
+| 1.*           | < 67                 |
 
 ![Screenshot](doc/screenshot.png)
