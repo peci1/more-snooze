@@ -41,7 +41,9 @@
 
 const ADDON_ID = "moresnooze@cyrille.nocus";
 
-let {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+let Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 let {ExtensionParent} = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 
 let extension = ExtensionParent.GlobalManager.getExtension(ADDON_ID);
