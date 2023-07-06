@@ -13,7 +13,7 @@
     "gecko": {
       "id": "moresnooze@cyrille.nocus",
       "strict_min_version": "78.0",
-      "strict_max_version": "102.*"
+      "strict_max_version": "115.*"
     }
   },
   "experiment_apis": {
