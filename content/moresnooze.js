@@ -35,16 +35,13 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/* global document, MutationObserver, Components, MozXULElement */
+/* global document, MutationObserver, Components, MozXULElement, Services */
 
 'use strict';
 
 const ADDON_ID = "moresnooze@cyrille.nocus";
 
-let Services = globalThis.Services || ChromeUtils.import(
-  "resource://gre/modules/Services.jsm"
-).Services;
-let {ExtensionParent} = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+let {ExtensionParent} = ChromeUtils.importESModule("resource://gre/modules/ExtensionParent.sys.mjs");
 
 let extension = ExtensionParent.GlobalManager.getExtension(ADDON_ID);
 

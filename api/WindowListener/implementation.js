@@ -11,15 +11,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-// Import some things we need.
-var { ExtensionCommon } = ChromeUtils.import(
-  "resource://gre/modules/ExtensionCommon.jsm"
+/* global Services, ExtensionCommon */
+
+var { ExtensionSupport } = ChromeUtils.importESModule(
+  "resource:///modules/ExtensionSupport.sys.mjs"
 );
-var { ExtensionSupport } = ChromeUtils.import(
-  "resource:///modules/ExtensionSupport.jsm"
-);
-var Services = globalThis.Services || 
-  ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 
 function getThunderbirdVersion() {
   let parts = Services.appinfo.version.split(".");
@@ -280,11 +276,11 @@ var WindowListener_102 = class extends ExtensionCommon.ExtensionAPI {
     for (let api of apis) {
       switch (api) {
         case "storage":
-          XPCOMUtils.defineLazyGetter(messenger, "storage", () => getStorage());
+          ChromeUtils.defineLazyGetter(messenger, "storage", () => getStorage());
           break;
 
         default:
-          XPCOMUtils.defineLazyGetter(messenger, api, () =>
+          ChromeUtils.defineLazyGetter(messenger, api, () =>
             context.apiCan.findAPIPath(api)
           );
       }
@@ -403,8 +399,6 @@ var WindowListener_102 = class extends ExtensionCommon.ExtensionAPI {
           let url = context.extension.rootURI.resolve(defaultUrl);
 
           let prefsObj = {};
-          prefsObj.Services = globalThis.Services||
-            ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
           prefsObj.pref = function (aName, aDefault) {
             let defaults = Services.prefs.getDefaultBranch("");
             switch (typeof aDefault) {
@@ -1322,11 +1316,11 @@ var WindowListener_115 = class extends ExtensionCommon.ExtensionAPI {
     for (let api of apis) {
       switch (api) {
         case "storage":
-          XPCOMUtils.defineLazyGetter(messenger, "storage", () => getStorage());
+          ChromeUtils.defineLazyGetter(messenger, "storage", () => getStorage());
           break;
 
         default:
-          XPCOMUtils.defineLazyGetter(messenger, api, () =>
+          ChromeUtils.defineLazyGetter(messenger, api, () =>
             context.apiCan.findAPIPath(api)
           );
       }
@@ -1476,8 +1470,6 @@ var WindowListener_115 = class extends ExtensionCommon.ExtensionAPI {
           let url = context.extension.rootURI.resolve(defaultUrl);
 
           let prefsObj = {};
-          prefsObj.Services = globalThis.Services||
-            ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
           prefsObj.pref = function (aName, aDefault) {
             let defaults = Services.prefs.getDefaultBranch("");
             switch (typeof aDefault) {
@@ -2133,7 +2125,7 @@ var WindowListener_115 = class extends ExtensionCommon.ExtensionAPI {
 
     // Unload JSMs of this add-on
     const rootURI = this.extension.rootURI.spec;
-    for (let module of Cu.loadedModules) {
+    for (let module of Cu.loadedESModules) {
       if (
         module.startsWith(rootURI) ||
         (module.startsWith("chrome://") &&

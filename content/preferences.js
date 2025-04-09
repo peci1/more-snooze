@@ -74,7 +74,7 @@ var preferences = {
     } else if (typeof notifyTools == "object") {
       // Register a listener for notifications from the background
       // to update a preference.
-      notifyTools.registerListener(
+      notifyTools.addListener(
         this._updatesFromBackground.bind(this)
       );
     }

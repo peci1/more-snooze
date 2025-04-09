@@ -29,8 +29,7 @@ var ADDON_ID = "";
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-var Services = globalThis.Services || 
-  ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
+/* global Services */
 
 var notifyTools = {
   registeredCallbacks: {},
