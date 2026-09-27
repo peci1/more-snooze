@@ -17,7 +17,7 @@ async function main() {
     console.log(`MoreSnooze: Preferences are ${pref} = ${await localStorageHandler.getPref(pref)}`);
   }
    
-  messenger.WindowListener.registerChromeUrl([
+  messenger.LegacyHelper.registerGlobalUrls([
     ["content", "moresnooze", "content/" ],
     ["resource", "moresnooze", "skin/"]
   ]);
