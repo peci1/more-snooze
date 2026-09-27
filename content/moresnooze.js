@@ -47,9 +47,16 @@ let extension = ExtensionParent.GlobalManager.getExtension(ADDON_ID);
 
 window.moreSnooze = {};
 
-Services.scriptloader.loadSubScript(extension.rootURI.resolve("content/notifyTools.js"), window.moreSnooze, "UTF-8");
-Services.scriptloader.loadSubScript(extension.rootURI.resolve("content/preferences.js"), window.moreSnooze, "UTF-8");
-Services.scriptloader.loadSubScript(extension.rootURI.resolve("content/fields.js"), window.moreSnooze, "UTF-8");
+function loadHelperScript(path) {
+  Services.scriptloader.loadSubScriptWithOptions(
+      extension.getURL(path),
+      {allowUnsafeURL: true, target: window.moreSnooze}
+  );
+}
+
+loadHelperScript("content/notifyTools.js");
+loadHelperScript("content/preferences.js");
+loadHelperScript("content/fields.js");
 
 function newMenuItem(item) {
   return (
